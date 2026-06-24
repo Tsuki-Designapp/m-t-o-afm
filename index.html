@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Météo Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Météo</header>
+Dashboard</h1>
+<!-- Indicateur de chargement -->
+<div id="loading" hidden>Chargement en cours...</div>
+<!-- Message d'erreur -->
+<p id="erreur" class="erreur"></p>
+<!-- Météo actuelle -->
+<section id="meteo-actuelle">
+<h2 id="ville">Paris</h2>
+<p id="temp"></p>
+<p id="desc"></p>
+<p id="vent"></p>
+<p id="humidite"></p>
+</section>
+<!-- Prévisions 7 jours -->
+<section id="previsions">
+<h2>Prévisions 7 jours</h2>
+<div id="cartes-previsions"></div>
+</section>
+<!-- type="module" est OBLIGATOIRE pour import/export -->
+<script type="module" src="main.js"></script>
+</body>
+</html>
