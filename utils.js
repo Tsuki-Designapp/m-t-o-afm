@@ -1,5 +1,5 @@
 // Fonction pour convertir le weathercode en description lisible
-function getWeatherDescription(code) {
+export function getWeatherDescription(code) {
 	const weatherCodes = {
 		0: "Ciel dégagé",
 		1: "Principalement dégagé",
@@ -32,6 +32,15 @@ function getWeatherDescription(code) {
 	};
 	return weatherCodes[code] || "Inconnu";
 }
-
-// Appel de la fonction
-afficherMeteo();
+export function formaterDate(dateSr) {
+	const date = new Date(dateSr).toLocaleDateString("fr-FR", {
+		weekday: "long",
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+	});
+	return date;
+}
+export function formaterVent(vitesse) {
+	return `Vent ${vitesse} km/h`;
+}
