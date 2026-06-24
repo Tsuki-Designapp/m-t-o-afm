@@ -1,4 +1,5 @@
 // URL de base pour l'API Open-Meteo (Paris)
+<<<<<<< HEAD
 const BASE_URL = "https://api.open-meteo.com/v1/forecast";
 import { getWeatherDescription } from "./utils.js";
 // Fonction pour récupérer les données météo
