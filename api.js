@@ -1,8 +1,8 @@
 // URL de base pour l'API Open-Meteo (Paris)
-const BASE_URL = "https://api.open-meteo.com/v1/forecast";
+const BASE_URL = "https://geocoding-api.open-meteo.com/v1/search?name={ville}";
 
 // Fonction pour récupérer les données météo
-async function fetchMeteoData(latitude = 48.8566, longitude = 2.3522) {
+async function fetchMeteoData(ville) {
   try {
     // Construction de l'URL avec les paramètres
     const params = new URLSearchParams({
