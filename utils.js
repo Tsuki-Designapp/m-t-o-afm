@@ -32,6 +32,8 @@ export function getWeatherDescription(code) {
 	};
 	return weatherCodes[code] || "Inconnu";
 }
+
+//convertir la date en format lisible
 export function formaterDate(dateSr) {
 	const date = new Date(dateSr).toLocaleDateString("fr-FR", {
 		weekday: "long",
@@ -41,6 +43,8 @@ export function formaterDate(dateSr) {
 	});
 	return date;
 }
+
+//convertir la vitesse du vent en format lisible
 export function formaterVent(vitesse) {
 	return `Vent ${vitesse} km/h`;
 }
