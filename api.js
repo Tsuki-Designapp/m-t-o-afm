@@ -1,11 +1,21 @@
+import { getWeatherDescription, formaterDate, formaterVent } from "./utils.js";
 // URL de base pour l'API Open-Meteo (Paris)
-<<<<<<< HEAD
 const BASE_URL = "https://api.open-meteo.com/v1/forecast";
-import { getWeatherDescription } from "./utils.js";
 // Fonction pour récupérer les données météo
-async function fetchMeteoData(latitude = 48.8566, longitude = 2.3522) {
+export async function fetchMeteoData(ville) {
 	try {
+		// Appel à l'API de géocodage pour obtenir les coordonnées de la ville
+		const geoResponse = await fetch(
+			`https://geocoding-api.open-meteo.com/v1/search?name=${ville}&count=1`,
+		);
+		if (!geoResponse.ok) {
+			throw new Error(`Erreur HTTP : ${geoResponse.status}`);
+		}
+		const geoData = await geoResponse.json();
+		const latitude = await geoData["results"][0].latitude;
+		const longitude = await geoData["results"][0].longitude;
 		// Construction de l'URL avec les paramètres
+
 		const params = new URLSearchParams({
 			latitude: latitude,
 			longitude: longitude,
@@ -19,7 +29,6 @@ async function fetchMeteoData(latitude = 48.8566, longitude = 2.3522) {
 
 		// Appel à l'API
 		const response = await fetch(url);
-		console.log(response);
 		if (!response.ok) {
 			throw new Error(`Erreur HTTP : ${response.status}`);
 		}
@@ -44,10 +53,9 @@ async function fetchMeteoData(latitude = 48.8566, longitude = 2.3522) {
 			description: getWeatherDescription(data.daily.weathercode[index]),
 		}));
 
-		return { current, daily };
+		return console.log({ current, daily });
 	} catch (error) {
 		console.error("Erreur lors de la récupération des données météo :", error);
 		return null;
 	}
 }
-fetchMeteoData();
