@@ -1,3 +1,5 @@
+import { afficherMeteoActuelle, afficherPrevisions } from "./ui.js";
+("./ui.js");
 import { getWeatherDescription, formaterDate, formaterVent } from "./utils.js";
 // URL de base pour l'API Open-Meteo (Paris)
 const BASE_URL = "https://api.open-meteo.com/v1/forecast";
@@ -34,7 +36,7 @@ export async function fetchMeteoData(ville) {
 		}
 
 		const data = await response.json();
-
+		console.log("test");
 		// Traitement des données pour un format plus lisible
 		const current = {
 			temperature: data.current.temperature_2m,
@@ -52,10 +54,12 @@ export async function fetchMeteoData(ville) {
 			weathercode: data.daily.weathercode[index],
 			description: getWeatherDescription(data.daily.weathercode[index]),
 		}));
-
+		afficherMeteoActuelle(data);
+		afficherPrevisions(data);
 		return console.log({ current, daily });
 	} catch (error) {
 		console.error("Erreur lors de la récupération des données météo :", error);
 		return null;
 	}
 }
+fetchMeteoData("dijon");
